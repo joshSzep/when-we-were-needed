@@ -4,13 +4,13 @@
 
 - **Form:** 26 weeks, 26 chapters.
 - **Frame:** California divorce waiting period.
-- **Movement:** Separation -> Divergence -> Legal hardening -> Irreversibility -> Decision and endurance.
+- **Movement:** The Terms of Safety -> Two Houses, Two Futures -> Private Life As Evidence -> The Cost of Being Right -> Answerability.
 - **Rule:** Each chapter should advance the custody conflict, the family fracture, and the background AI transition without becoming explanatory fiction.
 - **Use:** This is a beat breakdown, not final chapter titles and not scene prose.
 
-## Phase 1: Separation And Immediate Control
+## Phase 1: The Terms of Safety
 
-### Chapter 1: Week 1 - Threshold
+### Chapter 1: Week 1 - The Alert
 
 **Primary pressure:** The family crisis becomes legally and morally irreversible.
 
@@ -25,7 +25,7 @@
 
 **Function:** Establish the novel's true engine: not AI itself, but a family losing shared reality around care, danger, and value.
 
-### Chapter 2: Week 2 - Filing
+### Chapter 2: Week 2 - Petition
 
 **Primary pressure:** Private crisis enters official language.
 
@@ -41,7 +41,7 @@
 
 **Function:** Convert marital rupture into procedural conflict while showing how legal categories flatten the family's actual wound.
 
-### Chapter 3: Week 3 - Separate Houses
+### Chapter 3: Week 3 - Rooms Apart
 
 **Primary pressure:** Separation becomes spatial, logistical, and visible to Nico.
 
@@ -57,7 +57,7 @@
 
 **Function:** Make the divorce concrete through logistics and establish that control will be porous.
 
-### Chapter 4: Week 4 - Temporary Orders
+### Chapter 4: Week 4 - Interim Orders
 
 **Primary pressure:** The first legal decision creates rules no one believes in.
 
@@ -73,9 +73,9 @@
 
 **Function:** Close the first phase by formalizing the central question: who gets to define safety for Nico?
 
-## Phase 2: Divergence Of Worlds
+## Phase 2: Two Houses, Two Futures
 
-### Chapter 5: Week 5 - Ethan's Week
+### Chapter 5: Week 5 - The Permitted House
 
 **Primary pressure:** Ethan's household offers relief that may also be self-serving.
 
@@ -91,7 +91,7 @@
 
 **Function:** Show AI as genuinely tempting and helpful while beginning to undermine Ethan's innocence.
 
-### Chapter 6: Week 6 - Lena's Week
+### Chapter 6: Week 6 - The Watched House
 
 **Primary pressure:** Lena's protection begins to cost Nico trust.
 
@@ -107,7 +107,7 @@
 
 **Function:** Make Lena's defensible position generate real harm without discrediting her fear.
 
-### Chapter 7: Week 7 - Metrics
+### Chapter 7: Week 7 - The Numbers Improve
 
 **Primary pressure:** Measurable improvement complicates moral certainty.
 
@@ -123,7 +123,7 @@
 
 **Function:** Force the book to hold measurable benefit and moral unease simultaneously.
 
-### Chapter 8: Week 8 - Evaluation
+### Chapter 8: Week 8 - Best Interest
 
 **Primary pressure:** The family performs itself for outside assessment.
 
@@ -139,9 +139,9 @@
 
 **Function:** End the divergence phase by showing that performance, documentation, and interpretation are now central battlegrounds.
 
-## Phase 3: Legal And Moral Hardening
+## Phase 3: Private Life As Evidence
 
-### Chapter 9: Week 9 - The Logs
+### Chapter 9: Week 9 - The Private Record
 
 **Primary pressure:** Nico's private life becomes evidence.
 
@@ -157,7 +157,7 @@
 
 **Function:** Turn the custody battle inward, making intimacy itself contested material.
 
-### Chapter 10: Week 10 - Vendor
+### Chapter 10: Week 10 - Shared Infrastructure
 
 **Primary pressure:** Lena finds a stronger bridge between hospital harm and Ethan's world.
 
@@ -173,7 +173,7 @@
 
 **Function:** Bind personal betrayal to institutional power without making Ethan solely culpable.
 
-### Chapter 11: Week 11 - Akron Proposal
+### Chapter 11: Week 11 - The Akron Option
 
 **Primary pressure:** Escape becomes tempting and false.
 
@@ -189,7 +189,7 @@
 
 **Function:** Deepen the regional contrast while refusing to make Akron a cure.
 
-### Chapter 12: Week 12 - Recommendation
+### Chapter 12: Week 12 - Moderate Language
 
 **Primary pressure:** An interim recommendation hardens everyone's story.
 
@@ -205,9 +205,9 @@
 
 **Function:** End the legal-hardening phase with an official compromise that intensifies the private conflict.
 
-## Phase 4: Irreversibility
+## Phase 4: The Cost of Being Right
 
-### Chapter 13: Week 13 - Nico's Choice
+### Chapter 13: Week 13 - Nico's Terms
 
 **Primary pressure:** Nico stops being only acted upon.
 
@@ -223,7 +223,7 @@
 
 **Function:** Recenter Nico as an agent and push the conflict beyond parental interpretation.
 
-### Chapter 14: Week 14 - Evidence
+### Chapter 14: Week 14 - Admissible Harm
 
 **Primary pressure:** Lena must decide how much violation she can justify as protection.
 
@@ -239,7 +239,7 @@
 
 **Function:** Make Lena pay for her protective stance without making protection illegitimate.
 
-### Chapter 15: Week 15 - Disclosure
+### Chapter 15: Week 15 - What Ethan Knows
 
 **Primary pressure:** Ethan must decide whether truth matters when it damages his side.
 
@@ -255,7 +255,7 @@
 
 **Function:** Crack Ethan's alignment between fatherhood, profession, and futurist confidence.
 
-### Chapter 16: Week 16 - Leverage
+### Chapter 16: Week 16 - Backchannel
 
 **Primary pressure:** Saul's pragmatism crosses into family harm.
 
@@ -271,7 +271,7 @@
 
 **Function:** Expose power as both necessary and corrosive.
 
-### Chapter 17: Week 17 - Ruth And Nico
+### Chapter 17: Week 17 - The Errand
 
 **Primary pressure:** An older form of care reaches Nico but cannot solve the conflict.
 
@@ -287,7 +287,7 @@
 
 **Function:** Give Ruth agency and deepen the book's account of non-optimized human presence.
 
-### Chapter 18: Week 18 - Public Language
+### Chapter 18: Week 18 - Stakeholder Language
 
 **Primary pressure:** The family's crisis is echoed by public debate but not absorbed by it.
 
@@ -303,9 +303,9 @@
 
 **Function:** Close the irreversibility phase by showing that the family's wound belongs to the world but cannot be solved by the world.
 
-## Phase 5: Decision And Endurance
+## Phase 5: Answerability
 
-### Chapter 19: Week 19 - Mediation
+### Chapter 19: Week 19 - The Shape of a Deal
 
 **Primary pressure:** Everyone is tired enough to want a deal and wounded enough to resist one.
 
@@ -321,7 +321,7 @@
 
 **Function:** Shift the book from escalation toward decision without pretending procedure can heal the family.
 
-### Chapter 20: Week 20 - Hospital Consequence
+### Chapter 20: Week 20 - Clinical Discretion
 
 **Primary pressure:** Lena's professional resistance creates a cost.
 
@@ -337,7 +337,7 @@
 
 **Function:** Make the healthcare thread materially consequential and deepen Lena beyond custody panic.
 
-### Chapter 21: Week 21 - Company Consequence
+### Chapter 21: Week 21 - Company Position
 
 **Primary pressure:** Ethan's professional world demands loyalty at the wrong moment.
 
@@ -353,7 +353,7 @@
 
 **Function:** Make Ethan's growth concrete and costly without converting him into an anti-AI convert.
 
-### Chapter 22: Week 22 - School Break
+### Chapter 22: Week 22 - The School Flag
 
 **Primary pressure:** Nico's daily life breaks under adult management.
 
@@ -369,7 +369,7 @@
 
 **Function:** Give Nico a late-book crisis that is not a repeat of the inciting incident and not merely symbolic.
 
-### Chapter 23: Week 23 - Terms
+### Chapter 23: Week 23 - Livable Rules
 
 **Primary pressure:** The family begins defining imperfect rules they might actually live by.
 
@@ -386,7 +386,7 @@
 
 **Function:** Translate theme into livable constraint.
 
-### Chapter 24: Week 24 - Grandparents
+### Chapter 24: Week 24 - Old Futures
 
 **Primary pressure:** Ruth and Saul face what their support has cost.
 
@@ -402,7 +402,7 @@
 
 **Function:** Resolve the grandparents' arcs into implication and humility, not moral victory.
 
-### Chapter 25: Week 25 - Waiting Period
+### Chapter 25: Week 25 - The Waiting Ends
 
 **Primary pressure:** The legal end approaches before the emotional ending is ready.
 
@@ -418,7 +418,7 @@
 
 **Function:** Prepare the ending by refusing catharsis and foregrounding endurance.
 
-### Chapter 26: Week 26 - Endurance
+### Chapter 26: Week 26 - What Remains
 
 **Primary pressure:** The family must continue after certainty fails.
 
