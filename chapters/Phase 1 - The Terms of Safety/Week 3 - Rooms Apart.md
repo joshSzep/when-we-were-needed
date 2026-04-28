@@ -164,7 +164,7 @@ The lobby displayed a rotating set of impact metrics: reduced discharge friction
 
 Ethan stopped in front of **adolescent support continuity**.
 
-A week ago, he would have read it as a claim requiring validation. What population? What baseline? What subgroup effects? What false-positive rate? What harm measure? Now he saw Nico in a clinic chair refusing juice and saying Mira did not freak out.
+Before the alert, he would have read it as a claim requiring validation. What population? What baseline? What subgroup effects? What false-positive rate? What harm measure? Now he saw Nico in a clinic chair refusing juice and saying Mira did not freak out.
 
 He kept walking.
 
