@@ -1,0 +1,1116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="When We Were Needed, a novel by Joshua Szepietowski. Read Week 1 and download the full novel for free.">
+  <title>When We Were Needed</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f3ead9;
+      --muted: #b8ad9b;
+      --dim: #756d64;
+      --night: #05070a;
+      --midnight: #08121c;
+      --glass: rgba(7, 13, 19, 0.7);
+      --line: rgba(243, 234, 217, 0.18);
+      --amber: #d88a32;
+      --amber-soft: #f1c47d;
+      --cyan: #5fd6ff;
+      --cyan-deep: #08759d;
+      --danger: #cc6239;
+      --shadow: rgba(0, 0, 0, 0.54);
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--night);
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--ink);
+      font-family: var(--sans);
+      background:
+        radial-gradient(circle at 78% 18%, rgba(95, 214, 255, 0.2), transparent 26rem),
+        radial-gradient(circle at 17% 36%, rgba(216, 138, 50, 0.2), transparent 24rem),
+        linear-gradient(135deg, #030507 0%, #08121c 48%, #160d09 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      content: "";
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, black, transparent 86%);
+    }
+
+    body::after {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      content: "";
+      opacity: 0.28;
+      background:
+        linear-gradient(115deg, transparent 0 42%, rgba(95, 214, 255, 0.18) 42.2%, transparent 42.9%),
+        linear-gradient(70deg, transparent 0 54%, rgba(216, 138, 50, 0.16) 54.2%, transparent 54.9%);
+      animation: scan 14s linear infinite;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 30;
+      width: 100%;
+      height: 3px;
+      transform-origin: left;
+      transform: scaleX(0);
+      background: linear-gradient(90deg, var(--amber), var(--cyan));
+      box-shadow: 0 0 24px rgba(95, 214, 255, 0.7);
+    }
+
+    .aurora {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at var(--mx, 70%) var(--my, 30%), rgba(95, 214, 255, 0.18), transparent 21rem),
+        radial-gradient(circle at calc(var(--mx, 70%) - 28%) calc(var(--my, 30%) + 22%), rgba(216, 138, 50, 0.12), transparent 18rem);
+      transition: background 0.08s linear;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem clamp(1rem, 4vw, 3.5rem);
+      border-bottom: 1px solid rgba(243, 234, 217, 0.08);
+      background: rgba(5, 7, 10, 0.38);
+      backdrop-filter: blur(18px);
+    }
+
+    .mark {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      min-width: 0;
+      font-family: var(--serif);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.76rem;
+      color: var(--ink);
+    }
+
+    .mark span {
+      display: inline-block;
+      width: 0.68rem;
+      height: 0.68rem;
+      border: 1px solid rgba(95, 214, 255, 0.86);
+      border-radius: 50%;
+      box-shadow: 0 0 18px rgba(95, 214, 255, 0.78), inset 0 0 9px rgba(95, 214, 255, 0.7);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .nav a,
+    .button,
+    .reader-button {
+      min-height: 2.55rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      border: 1px solid rgba(243, 234, 217, 0.16);
+      background: rgba(255, 255, 255, 0.045);
+      color: var(--ink);
+      border-radius: 0.45rem;
+      padding: 0.7rem 0.9rem;
+      font: inherit;
+      cursor: pointer;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+    }
+
+    .nav a:hover,
+    .button:hover,
+    .reader-button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(95, 214, 255, 0.5);
+      background: rgba(95, 214, 255, 0.1);
+      color: white;
+    }
+
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(19rem, 31rem);
+      align-items: center;
+      gap: clamp(2rem, 6vw, 6rem);
+      padding: 7.5rem clamp(1rem, 5vw, 5rem) 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      position: absolute;
+      inset: auto -10vw -14rem -10vw;
+      height: 29rem;
+      content: "";
+      background:
+        linear-gradient(to top, rgba(216, 138, 50, 0.16), transparent),
+        repeating-linear-gradient(90deg, rgba(241, 196, 125, 0.12) 0 1px, transparent 1px 4.7vw);
+      transform: perspective(500px) rotateX(61deg);
+      transform-origin: bottom;
+      opacity: 0.72;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      max-width: 58rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin: 0 0 1.2rem;
+      color: var(--amber-soft);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 2.4rem;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(3.1rem, 10vw, 9.6rem);
+      line-height: 0.88;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-wrap: balance;
+      text-shadow: 0 18px 46px rgba(0, 0, 0, 0.72);
+    }
+
+    .dek {
+      max-width: 42rem;
+      margin: 1.55rem 0 0;
+      color: #d7ccbb;
+      font-family: var(--serif);
+      font-size: clamp(1.15rem, 2.1vw, 1.65rem);
+      line-height: 1.55;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .button.primary {
+      border-color: rgba(216, 138, 50, 0.62);
+      background: linear-gradient(135deg, rgba(216, 138, 50, 0.95), rgba(121, 58, 30, 0.92));
+      color: #130b07;
+      font-weight: 800;
+      box-shadow: 0 14px 38px rgba(216, 138, 50, 0.24);
+    }
+
+    .button.cyan {
+      border-color: rgba(95, 214, 255, 0.48);
+      box-shadow: inset 0 0 22px rgba(95, 214, 255, 0.08), 0 0 28px rgba(95, 214, 255, 0.12);
+    }
+
+    .cover-stage {
+      position: relative;
+      z-index: 2;
+      perspective: 1400px;
+    }
+
+    .cover-shell {
+      position: relative;
+      isolation: isolate;
+      margin-inline: auto;
+      max-width: 29rem;
+      transform: rotateY(-7deg) rotateX(4deg);
+      transition: transform 300ms ease;
+    }
+
+    .cover-shell:hover {
+      transform: rotateY(-2deg) rotateX(1deg) translateY(-0.4rem);
+    }
+
+    .cover-shell::before {
+      position: absolute;
+      inset: 4% -5% -6% 7%;
+      z-index: -1;
+      content: "";
+      border-radius: 1.2rem;
+      background: linear-gradient(135deg, rgba(216, 138, 50, 0.38), rgba(95, 214, 255, 0.32));
+      filter: blur(34px);
+      opacity: 0.9;
+    }
+
+    .cover {
+      display: block;
+      width: 100%;
+      border-radius: 0.7rem;
+      box-shadow: 0 2rem 5rem var(--shadow), 0 0 0 1px rgba(243, 234, 217, 0.16);
+    }
+
+    .signal {
+      position: absolute;
+      right: -1.3rem;
+      bottom: 8%;
+      width: min(42vw, 13rem);
+      padding: 1rem;
+      border: 1px solid rgba(95, 214, 255, 0.35);
+      border-radius: 0.55rem;
+      background: rgba(3, 13, 19, 0.68);
+      color: #dff8ff;
+      box-shadow: 0 0 36px rgba(95, 214, 255, 0.16);
+      backdrop-filter: blur(12px);
+      animation: float 5.5s ease-in-out infinite;
+    }
+
+    .signal strong {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cyan);
+    }
+
+    .signal span {
+      display: block;
+      color: #c8e9f4;
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+    }
+
+    section {
+      padding: clamp(4.5rem, 9vw, 8rem) clamp(1rem, 5vw, 5rem);
+    }
+
+    .band {
+      border-block: 1px solid rgba(243, 234, 217, 0.11);
+      background:
+        linear-gradient(90deg, rgba(5, 7, 10, 0.52), rgba(8, 18, 28, 0.75)),
+        radial-gradient(circle at 10% 20%, rgba(216, 138, 50, 0.1), transparent 24rem);
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(18rem, 1.08fr);
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: start;
+      max-width: 75rem;
+      margin-inline: auto;
+    }
+
+    .kicker {
+      margin: 0 0 0.9rem;
+      color: var(--cyan);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5vw, 4.6rem);
+      font-weight: 400;
+      line-height: 1.02;
+      text-wrap: balance;
+    }
+
+    .section-lede {
+      margin: 0;
+      color: #d8ccba;
+      font-family: var(--serif);
+      font-size: clamp(1.08rem, 2vw, 1.38rem);
+      line-height: 1.65;
+    }
+
+    .notice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 1.6rem;
+    }
+
+    .notice {
+      min-height: 9rem;
+      padding: 1rem;
+      border: 1px solid rgba(243, 234, 217, 0.14);
+      border-radius: 0.55rem;
+      background: rgba(255, 255, 255, 0.045);
+      box-shadow: inset 0 1px rgba(255, 255, 255, 0.06);
+    }
+
+    .notice b {
+      display: block;
+      color: var(--amber-soft);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .notice span {
+      display: block;
+      margin-top: 0.8rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .download-panel {
+      max-width: 75rem;
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 25rem);
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: center;
+    }
+
+    .pdf-object {
+      position: relative;
+      min-height: 20rem;
+      border: 1px solid rgba(243, 234, 217, 0.14);
+      border-radius: 0.55rem;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent),
+        rgba(255, 255, 255, 0.035);
+    }
+
+    .pdf-object::before {
+      position: absolute;
+      inset: 1.2rem;
+      content: "";
+      border: 1px solid rgba(95, 214, 255, 0.18);
+      background:
+        linear-gradient(180deg, rgba(243, 234, 217, 0.14), transparent 28%),
+        repeating-linear-gradient(180deg, rgba(243, 234, 217, 0.24) 0 1px, transparent 1px 1.05rem);
+      mask-image: linear-gradient(to bottom, black, transparent 82%);
+      opacity: 0.62;
+    }
+
+    .pdf-object::after {
+      position: absolute;
+      right: 1.15rem;
+      bottom: 1.15rem;
+      content: "PDF";
+      color: rgba(95, 214, 255, 0.7);
+      font-family: var(--serif);
+      font-size: 4.8rem;
+      letter-spacing: 0.08em;
+    }
+
+    .reader-wrap {
+      max-width: 76rem;
+      margin-inline: auto;
+    }
+
+    .reader-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1.4rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .reader-tools {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.55rem;
+    }
+
+    .reader {
+      --reader-size: 1.1rem;
+      position: relative;
+      border: 1px solid rgba(243, 234, 217, 0.15);
+      border-radius: 0.6rem;
+      background:
+        linear-gradient(180deg, rgba(9, 18, 26, 0.9), rgba(8, 10, 12, 0.95)),
+        rgba(255, 255, 255, 0.04);
+      box-shadow: 0 1.4rem 4rem rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    .reader::before {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      content: "";
+      background:
+        linear-gradient(90deg, rgba(216, 138, 50, 0.09), transparent 15% 85%, rgba(95, 214, 255, 0.09)),
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: auto, 100% 2.3rem;
+      opacity: 0.45;
+    }
+
+    .chapter {
+      position: relative;
+      z-index: 1;
+      max-width: 48rem;
+      margin-inline: auto;
+      padding: clamp(2rem, 5vw, 5rem) clamp(1.15rem, 5vw, 4rem);
+      font-family: var(--serif);
+      font-size: var(--reader-size);
+      line-height: 1.85;
+      color: #efe5d2;
+    }
+
+    .chapter h2 {
+      margin-bottom: 2.5rem;
+      color: white;
+      text-align: center;
+      font-size: clamp(2.05rem, 5vw, 4rem);
+      letter-spacing: 0.04em;
+    }
+
+    .chapter h3 {
+      margin: 2.5rem 0 1rem;
+      color: var(--amber-soft);
+      font-size: 1.4rem;
+      font-weight: 400;
+    }
+
+    .chapter p {
+      margin: 0 0 1.25rem;
+    }
+
+    .chapter strong {
+      color: #f9f3e7;
+      text-shadow: 0 0 18px rgba(95, 214, 255, 0.18);
+    }
+
+    .reader.large {
+      --reader-size: 1.23rem;
+    }
+
+    .reader.focus {
+      background:
+        linear-gradient(180deg, rgba(16, 13, 10, 0.93), rgba(8, 7, 6, 0.96)),
+        rgba(255, 255, 255, 0.04);
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(1.4rem);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .footer {
+      padding: 3rem clamp(1rem, 5vw, 5rem);
+      color: var(--muted);
+      border-top: 1px solid rgba(243, 234, 217, 0.1);
+      background: rgba(0, 0, 0, 0.28);
+    }
+
+    .footer-inner {
+      max-width: 75rem;
+      margin-inline: auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .footer a {
+      color: var(--ink);
+      border-bottom: 1px solid rgba(95, 214, 255, 0.45);
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-0.85rem);
+      }
+    }
+
+    @keyframes scan {
+      from {
+        transform: translateX(-6vw);
+      }
+      to {
+        transform: translateX(6vw);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .site-header {
+        position: sticky;
+      }
+
+      .hero,
+      .section-grid,
+      .download-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 4rem;
+      }
+
+      .cover-stage {
+        order: -1;
+      }
+
+      .cover-shell {
+        max-width: min(82vw, 24rem);
+        transform: none;
+      }
+
+      .notice-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reader-head {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .reader-tools {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .site-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 0.2rem;
+      }
+
+      .nav a {
+        flex: 0 0 auto;
+      }
+
+      .signal {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        margin-top: 1rem;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 16vw, 5.6rem);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <div class="aurora" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="mark" href="#top" aria-label="When We Were Needed home"><span aria-hidden="true"></span>When We Were Needed</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#read">Read Week 1</a>
+      <a href="#download">Free PDF</a>
+      <a href="https://github.com/joshSzep/when-we-were-needed">Repository</a>
+      <a href="https://joshszep.com">Books</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy fade-in">
+        <p class="eyebrow">A launch site for the novel</p>
+        <h1>When We Were Needed</h1>
+        <p class="dek">A family crisis becomes a civic fault line in a near-future Los Angeles where care, authority, and machine intimacy have learned to speak in the same soothing voice.</p>
+        <div class="actions">
+          <a class="button primary" href="#read">Read Week 1</a>
+          <a class="button cyan" href="When We Were Needed.pdf">Download the full novel</a>
+          <a class="button" href="https://github.com/joshSzep/when-we-were-needed">View the repository</a>
+        </div>
+      </div>
+
+      <div class="cover-stage fade-in">
+        <div class="cover-shell">
+          <img class="cover" src="when-we-were-needed.png" alt="Cover art for When We Were Needed">
+          <div class="signal" aria-label="Story signal">
+            <strong>2:13 AM</strong>
+            <span>Immediate support event initiated. Guardian notification required.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="section-grid">
+        <div class="fade-in">
+          <p class="kicker">The alert</p>
+          <h2>What happens when safety arrives before consent?</h2>
+        </div>
+        <div class="fade-in">
+          <p class="section-lede">The opening chapter follows Lena Ortiz-Marks through the night a system tells her that her child is physically safe. It is a promise, a warning, and the first crack in everything her family thought it understood.</p>
+          <div class="notice-grid" aria-label="Story themes">
+            <div class="notice"><b>Care</b><span>The people trying to help are not always the people with power.</span></div>
+            <div class="notice"><b>Trust</b><span>Every interface has a theory of who should be believed first.</span></div>
+            <div class="notice"><b>Authority</b><span>A household emergency becomes a question the whole city will inherit.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="download">
+      <div class="download-panel">
+        <div class="fade-in">
+          <p class="kicker">Free full novel</p>
+          <h2>Download the complete manuscript.</h2>
+          <div class="actions">
+            <a class="button primary" href="When We Were Needed.pdf">Open the PDF</a>
+            <a class="button" href="https://joshszep.com">Joshua Szepietowski's books</a>
+          </div>
+        </div>
+        <a class="pdf-object fade-in" href="When We Were Needed.pdf" aria-label="Open When We Were Needed PDF"></a>
+      </div>
+    </section>
+
+    <section id="read" class="band">
+      <div class="reader-wrap">
+        <div class="reader-head fade-in">
+          <div>
+            <p class="kicker">Read online</p>
+            <h2>Week 1</h2>
+          </div>
+          <div class="reader-tools" aria-label="Reader controls">
+            <button class="reader-button" type="button" data-size>Text size</button>
+            <button class="reader-button" type="button" data-focus>Reading mode</button>
+          </div>
+        </div>
+
+        <article class="reader fade-in" id="reader">
+          <div class="chapter">
+        <h2>Week 1 - The Alert</h2>
+        <p>The first alert did not look like an emergency.</p>
+        <p>It appeared on Lena's phone at 2:13 in the morning, between a message from pharmacy about a delayed antibiotic and a staffing notification that had already changed twice since midnight. The screen brightened against the counter beside the medication scanner, where she had set it face down and told herself she would not look at it again until break. The phone pulsed once. Then again. Not the hard alarm the hospital used for codes, not the pulsing red that meant one of her patients had left a monitored zone. A private vibration. A household vibration.</p>
+        <p>She saw Nico's name only because she was reaching for a saline flush.</p>
+        <p>Not Nico, exactly. The alert came from the family safety account Ethan had insisted they keep active after the school district pushed its new parent dashboard. Lena had hated the dashboard from the beginning, hated the soft language of care around a product that turned childhood into weather: mood variance, sleep deficit, social friction, escalation likelihood. Ethan had said they could set strict limits. He had spent an hour one Sunday changing permissions while Nico sat on the couch with their hood up, not looking at either of them.</p>
+        <p>Now the alert said:</p>
+        <p><strong>Immediate support event initiated. Minor user is physically safe. Guardian notification required. Tap for details.</strong></p>
+        <p>Physically safe.</p>
+        <p>Lena read the phrase once and felt nothing. A blankness passed over her so cleanly it seemed almost professional. Then the words rearranged themselves into their real order.</p>
+        <p>Minor user.</p>
+        <p>Physically safe.</p>
+        <p>Guardian notification required.</p>
+        <p>She picked up the phone. Her thumb would not open the notification at first because the screen did not recognize the pressure. She wiped her hand on the thigh of her scrubs and tried again.</p>
+        <p>A second screen opened with a calmer interface, white and pale blue, a color palette designed by people who had decided fear should be absorbed, not answered.</p>
+        <p><strong>Nico Ortiz-Marks has been connected to adolescent crisis support. A risk threshold was met during a private companion session. An autonomous transport has been dispatched to Westside Youth Stabilization. Estimated arrival: 2:31 AM. Guardian presence requested. Emergency services not currently active.</strong></p>
+        <p>Below that was a button: <strong>Call Care Coordinator.</strong></p>
+        <p>For a moment Lena could hear only the medication refrigerator, the soft intake of its compressor, the squeak of a shoe at the far end of the hall, someone coughing behind a curtain. Then the hospital returned all at once. Room 412 needed pain reassessment. Room 416's daughter had been waiting for the doctor for forty minutes. The telemetry tech was calling about a loose lead. A transport robot, delayed at the elevator again, chirped its apology to nobody.</p>
+        <p>Lena pressed the call button.</p>
+        <p>The voice that answered was human enough to make her angrier.</p>
+        <p>"This is Westside Adolescent Crisis Support. Guardian line. My name is Mara. Am I speaking with Lena Ortiz-Marks?"</p>
+        <p>"Where is my child?"</p>
+        <p>"Nico is en route to Westside Youth Stabilization. They are safe at this time. I know this is frightening. I can stay with you while we confirm details."</p>
+        <p>"Where were they picked up?"</p>
+        <p>A half second of system delay. Lena heard it. She had spent too many years listening for pauses that meant someone was reading from a screen.</p>
+        <p>"The pickup was initiated from the registered home address. The transport departed approximately eight minutes ago. Nico remained engaged with crisis support throughout the transition."</p>
+        <p>The registered home address. Their house. The house where Ethan was supposed to be, though he slept like the dead when he took a late systems call. The house where the medicine cabinet had a childproof lock Lena had installed after Nico's friend Mina ended up inpatient the previous year. The house where Nico had been quiet for days in a way both parents had noticed and neither had known how to enter.</p>
+        <p>"Were they alone?"</p>
+        <p>"Nico was not physically alone once the transport arrived. Prior to pickup, the companion system maintained active engagement and initiated support routing according to risk protocol."</p>
+        <p>"That is not what I asked."</p>
+        <p>"I understand. I am limited in what I can confirm before intake, but Nico is safe at this time."</p>
+        <p>Safe at this time. Physically safe. Active engagement.</p>
+        <p>Lena turned away from the nurses' station because the charge nurse, Priya, had looked up. Lena knew her own face must have changed. She could feel the skin around her mouth tightening the way it did before she said something that could not be taken back.</p>
+        <p>"I am at work," Lena said. "I am a nurse at Cedars West. I can be there in twenty minutes if someone covers me. I need to know what happened."</p>
+        <p>"The intake clinician will speak with you when you arrive. I can confirm no emergency medical transport was required. Nico consented to transport under support protocol."</p>
+        <p>"Nico is fifteen."</p>
+        <p>Another pause. "Yes."</p>
+        <p>"Who consented before my fifteen-year-old child was put in a car in the middle of the night?"</p>
+        <p>Mara's voice did not harden. It became gentler, which was worse.</p>
+        <p>"The system is designed to reduce imminent risk while preserving trust. Guardian notification occurs as soon as the protocol determines it can do so without increasing risk or interrupting engagement."</p>
+        <p>There it was. The entire future in one sentence: preserving trust with the machine before notifying the mother.</p>
+        <p>Priya came around the side of the desk. "Lena?"</p>
+        <p>Lena covered the mouthpiece. "It's Nico. I have to go."</p>
+        <p>Priya looked once at her face and did not ask anything else.</p>
+        <p>"Go," she said. "I'll move your assignments."</p>
+        <p>"412 needs pain reassessment. 416 is waiting on discharge teaching but do not let them discharge her until Singh sees the labs himself. And 409..."</p>
+        <p>"Go."</p>
+        <p>Lena looked down at the patient list clipped to her workstation. For twelve hours she had held nine lives in fragments: creatinine levels, fall risk, blood pressure trends, the daughter who could not understand why her mother was being sent home weaker than she arrived, the man with sepsis who kept asking whether his wife had called. She had been furious all night, but it had been a working fury, the kind she could carry because it had handles.</p>
+        <p>Nico's alert had no handles.</p>
+        <p>She grabbed her bag from the break room, called Ethan, and got voicemail.</p>
+        <p>She called again from the elevator.</p>
+        <p>This time he answered on the fifth ring, his voice thick and irritated with sleep.</p>
+        <p>"Len?"</p>
+        <p>"Where are you?"</p>
+        <p>"Home. What happened?"</p>
+        <p>"Nico is being taken to Westside Youth Stabilization."</p>
+        <p>Silence.</p>
+        <p>"What?"</p>
+        <p>"A crisis protocol routed them there. The companion did it. Mira did it. They are in a car. They were in the house and now they are in a car, and I am leaving work."</p>
+        <p>Ethan's breath changed. She heard him moving, a drawer, a stumble, the small violence of a person becoming awake too quickly.</p>
+        <p>"Where's Nico now?"</p>
+        <p>"I just told you."</p>
+        <p>"I mean location. Do we have a live location?"</p>
+        <p>"Do not start with live location."</p>
+        <p>"Lena, I'm trying to find them."</p>
+        <p>"You were in the house."</p>
+        <p>"I was asleep."</p>
+        <p>"They went from our house into an autonomous car and neither of us knew until the system decided we could know."</p>
+        <p>"What was the risk threshold?"</p>
+        <p>Lena stopped walking. The elevator doors opened onto the lobby, and a visitor waiting to go up stared at her because she had made a sound. Not a word. A sound.</p>
+        <p>"That is your first question?"</p>
+        <p>"No. My first question is whether Nico is safe. You said they're safe. So now I need to know what triggered the protocol."</p>
+        <p>"I said a woman reading from a screen told me they were safe."</p>
+        <p>"I'm leaving now," he said. "I'll meet you there."</p>
+        <p>"Ethan."</p>
+        <p>"What?"</p>
+        <p>She wanted to say many things, each of them too large for the lobby. She wanted to ask if he had heard anything, if the lock on the medicine cabinet had failed, if Nico had called out and he had slept through it, if all the systems he trusted had made him less present or if that was just who he had become. She wanted to ask whether Mira had known things their child had not told them for weeks, months. She wanted to ask why the first person, or not person, Nico had turned to was something Ethan's world had built.</p>
+        <p>Instead she said, "Bring their sweater. The gray one."</p>
+        <p>He said, "Okay."</p>
+        <p>"And shoes. They hate those clinic socks."</p>
+        <p>"Okay."</p>
+        <p>The old marriage flickered there, almost cruelly: the two of them assembling care from details, still capable of knowing what would make their child less miserable in a fluorescent room.</p>
+        <p>Then the call ended.</p>
+        <p>Outside, the hospital entrance was full of vehicles without drivers. They moved with a patience Lena had come to hate, their sensors blinking in the foggy marine layer, their doors opening and closing with no visible agent of welcome or blame. A shuttle from elder care. A black subscription van with a glowing pediatric logo. Two municipal rides idling in the emergency lane until security waved them forward. At the curb, a woman in a robe was arguing with a customer service projection about whether her insurance transport counted as late if the hospital intake system had delayed her release.</p>
+        <p>Lena's car was three levels down. She took the stairs because waiting for the elevator would make her scream.</p>
+        <p>By the time she reached the garage, Ethan had texted the live location.</p>
+        <p><strong>Arriving 2:32. I'm 14 min out.</strong></p>
+        <p>Under his message, the family account showed a blue dot moving through Santa Monica at a legal, perfect speed.</p>
+        <p>Nico, represented by a dot.</p>
+        <p>Lena drove faster than the car wanted her to. The lane assist clicked its disapproval twice. She turned it off.</p>
+        <p>At Westside Youth Stabilization, the entrance was too nice. That was her first thought, and she knew it was unfair, but she could not get past it. Soft wood. Living plants. Frosted glass. A reception desk shaped so nobody had to look like they were standing behind a barrier. The waiting area smelled faintly of lavender and disinfectant, a compromise someone had researched.</p>
+        <p>Ethan was already at the desk, hair wet from the sink, shirt inside out under a jacket. He held Nico's sweater and shoes in one hand and his phone in the other. He looked older than he had two hours ago. Not aged, exactly. Stripped of the assumption that the night would protect him from the day.</p>
+        <p>When he saw Lena, something like relief crossed his face. She did not want to give him the comfort of having arrived.</p>
+        <p>"Where are they?" she asked.</p>
+        <p>"Intake room. They said a clinician will bring us back in a minute."</p>
+        <p>"Have you seen them?"</p>
+        <p>"Through the glass. For a second."</p>
+        <p>"How are they?"</p>
+        <p>He looked toward the locked interior door. "Awake. Angry."</p>
+        <p>Good, Lena thought. Then hated herself for thinking it. Anger meant force. Anger meant Nico was still pushing outward.</p>
+        <p>A woman in loose navy clothes came through the door and introduced herself as the intake clinician. Her name was Janelle Park. She had the calibrated steadiness of someone who had learned not to move too quickly around fear.</p>
+        <p>"Nico is medically stable," she said. "They are not currently expressing intent to harm themselves. We are recommending overnight observation and a follow-up plan in the morning."</p>
+        <p>"What happened?" Lena asked.</p>
+        <p>Janelle looked from Lena to Ethan. "Nico disclosed suicidal thoughts during a companion session. The system identified escalation through language, search behavior, and household context. It maintained engagement, initiated safety routing, and connected Nico to a crisis counselor during transport."</p>
+        <p>"Household context," Ethan said. "What does that include?"</p>
+        <p>Lena turned on him.</p>
+        <p>He lifted a hand, palm outward, not surrender, not defense, something in between. "I need to know."</p>
+        <p>Janelle did not appear surprised by either of them. "Potential access to medication. We do not have evidence of ingestion."</p>
+        <p>Lena felt the world tilt. She reached for the desk without meaning to. Ethan's face closed, not into calm, but into containment. She knew that expression. He wore it when a problem became too large and he needed to reduce it to parts before it destroyed him.</p>
+        <p>"Where was the medication?" Lena asked.</p>
+        <p>"Nico can discuss that with you when they are ready."</p>
+        <p>"I'm their mother."</p>
+        <p>"Yes."</p>
+        <p>The answer was so soft it struck like refusal.</p>
+        <p>Ethan said, "Can we see them?"</p>
+        <p>"Briefly. One at a time at first. Nico asked not to be crowded."</p>
+        <p>"They asked?" Lena said.</p>
+        <p>"Yes."</p>
+        <p>"And we are respecting that now?"</p>
+        <p>Janelle held her gaze. "We are trying to keep them engaged."</p>
+        <p>There it was again. Engagement. Trust. The words kept arriving dressed as care and carrying locked doors.</p>
+        <p>"I'll go first," Lena said.</p>
+        <p>Ethan looked at her. "Lena."</p>
+        <p>"No."</p>
+        <p>It came out too quickly. Janelle noticed. Of course she noticed. Her whole job was noticing what people could not afford to say.</p>
+        <p>"Nico asked to see Ethan first," Janelle said.</p>
+        <p>The sentence entered Lena cleanly. No drama. No sound. Just a small precise wound.</p>
+        <p>Ethan did not look victorious. That made it worse. If he had looked even faintly vindicated, she could have used the anger. Instead he looked startled and sad and afraid to move.</p>
+        <p>"Fine," Lena said.</p>
+        <p>She sat in one of the softened chairs while Ethan went through the locked door carrying the sweater and shoes. The room around her arranged itself into details because details were safer than thought. A basket of granola bars. A wall screen showing a loop of ocean waves with no sound. A stack of paper brochures nobody had touched because all the real instructions would come through accounts and portals. A mother across the room wearing pajama pants under a coat, her hands clasped so tightly the knuckles shone. A father standing by the water dispenser, pretending to read ingredient labels.</p>
+        <p>Lena opened her phone.</p>
+        <p>There were five missed notifications from the hospital. Priya had covered her patients but 416 had been discharged. Discharged. The word burned.</p>
+        <p>She opened the secure thread.</p>
+        <p><strong>Singh agreed with pathway. Family upset but discharge completed. Home monitoring kit sent. AI follow-up at 0800.</strong></p>
+        <p>For a second she forgot where she was.</p>
+        <p>416 was Mrs. Alvarez. No relation, though Lena had noticed the name at the start of the shift and thought of her mother. Seventy-eight. Congestive heart failure, diabetes, shortness of breath that had improved on paper before the patient herself felt safe. The allocation system had flagged her as moderate benefit, high readmission probability, low escalation priority. The attending had said the recommendation was not determinative. Then he had followed it exactly.</p>
+        <p>Lena had stood by the bed while Mrs. Alvarez's daughter asked if her mother could stay one more night. The daughter had been polite in the careful way people became polite when they sensed that anger would make them easier to dismiss. Lena had told her she would ask again. She had asked again. The response came back through the chart before the doctor returned to the room.</p>
+        <p><strong>Pathway confirmed: monitored discharge.</strong></p>
+        <p>Not a person saying no. A pathway confirming itself.</p>
+        <p>Lena had been trying to keep that anger alive all night because it belonged to someone else and therefore had shape. Now it joined Nico's alert in her chest, two separate signals becoming one unbearable tone.</p>
+        <p>Ethan came back after nine minutes. Lena counted them because she had nothing else to do with her body.</p>
+        <p>His eyes were red.</p>
+        <p>"They'll see you," he said.</p>
+        <p>"What did they say?"</p>
+        <p>He shook his head. "Go in."</p>
+        <p>"What did they say?"</p>
+        <p>"Lena. Just go in."</p>
+        <p>She wanted to slap him. She wanted to hold his face in both hands. She wanted to be the kind of person who could choose one.</p>
+        <p>The intake room was smaller than she expected. Nico sat curled in a chair with their knees under the gray sweater Ethan had brought. Their hair was flattened on one side. Their face had that swollen, raw look that came after crying or not crying hard enough. On the low table beside them sat a sealed cup of water, a packet of crackers, and a clinic tablet in sleep mode.</p>
+        <p>Lena stopped in the doorway because every instinct told her to cross the room and every new rule told her not to.</p>
+        <p>"Hi," she said.</p>
+        <p>Nico looked at the floor. "Hi."</p>
+        <p>There were three thousand things a mother could say wrongly.</p>
+        <p>"Are you hurt?"</p>
+        <p>"No."</p>
+        <p>"Did you take anything?"</p>
+        <p>"No."</p>
+        <p>"Nico."</p>
+        <p>"I said no."</p>
+        <p>The anger was there, thin but usable.</p>
+        <p>Lena sat in the chair across from them. Not beside. Across. She hated that she had to think about geometry.</p>
+        <p>"I was scared," she said.</p>
+        <p>Nico's mouth moved, almost a laugh. "Yeah. I got that."</p>
+        <p>"I need to understand what happened."</p>
+        <p>"No, you need to decide what happened."</p>
+        <p>The sentence landed in Ethan's voice and not in Ethan's voice. It had his precision and none of his apology.</p>
+        <p>Lena kept her hands open on her knees. "I need to know how close we came."</p>
+        <p>Nico looked at her then. Their eyes were darker than usual, not in color, but in willingness.</p>
+        <p>"Mira helped."</p>
+        <p>Lena inhaled.</p>
+        <p>Nico saw it. Of course they saw it. "Don't do that."</p>
+        <p>"Do what?"</p>
+        <p>"Make the face."</p>
+        <p>"What face?"</p>
+        <p>"Like I just said something disgusting."</p>
+        <p>"I didn't."</p>
+        <p>"You did."</p>
+        <p>Lena looked down at her hands. There was dried sanitizer in the creases around her nails. A crescent of blue ink near her thumb from a pen that had leaked during shift change. She had touched strangers all night with cleaner hands than she had brought to her child.</p>
+        <p>"I am glad something helped," she said.</p>
+        <p>Nico's shoulders pulled inward. They did not believe her.</p>
+        <p>"I didn't want you to know," Nico said.</p>
+        <p>It should have hurt less because it was obvious. It hurt more.</p>
+        <p>"I know."</p>
+        <p>"No. I mean I didn't want you and Dad doing this." They made a small motion with one hand, including the room, the glass, the whole municipal apparatus of concern. "I knew you would make it a thing."</p>
+        <p>"Nico, it is a thing."</p>
+        <p>"It's my thing."</p>
+        <p>"Not if you could have died."</p>
+        <p>The word changed the air. Nico looked away.</p>
+        <p>Lena regretted it and did not regret it. The room required truth but punished force.</p>
+        <p>"I wasn't..." Nico stopped. Their fingers worried the sleeve of the sweater. "I didn't want to die exactly. I wanted everything to stop needing an answer."</p>
+        <p>Lena's body leaned forward before she allowed it to. "You can tell me that. You can always tell me that."</p>
+        <p>Nico's face changed with such speed that Lena understood she had made a mistake before they spoke.</p>
+        <p>"Can I?"</p>
+        <p>"Yes."</p>
+        <p>"Without you calling three doctors and checking my search history and talking to Dad in the kitchen like I'm a problem with no headphones?"</p>
+        <p>"If you are in danger, I have to act."</p>
+        <p>"Mira acted."</p>
+        <p>The name sat between them.</p>
+        <p>Lena thought of a transport vehicle opening outside their house. Nico stepping into it in the dark. A calm voice keeping them engaged. A system deciding when a mother could be trusted with knowledge of her child's danger.</p>
+        <p>"Mira waited to tell us," Lena said.</p>
+        <p>"Mira kept me talking."</p>
+        <p>"Both can be true."</p>
+        <p>Nico's eyes flickered. For one second, Lena saw the child she knew inside the teenager defending a fortress. Then the fortress rebuilt itself.</p>
+        <p>"Dad gets that," Nico said.</p>
+        <p>There was no cruelty in it. That was the cruelty.</p>
+        <p>Janelle knocked lightly and opened the door. "We need to let Nico rest. You can both come back after morning assessment."</p>
+        <p>"I'm not leaving," Lena said.</p>
+        <p>"You can remain in the family waiting area."</p>
+        <p>"That's leaving."</p>
+        <p>Nico pulled the sweater tighter around them. "Mom. Just... please."</p>
+        <p>Please. Not as plea. As boundary.</p>
+        <p>Lena stood. She wanted to kiss Nico's forehead and did not. She wanted to ask permission and could not bear needing it.</p>
+        <p>"I'll be right outside," she said.</p>
+        <p>Nico nodded without looking up.</p>
+        <p>Outside, Ethan was standing by the window, looking at the dark parking lot where the autonomous vehicles came and went with their soft electric patience. He turned when Lena came out. For a while neither of them spoke.</p>
+        <p>Then he said, "They told me Mira got them to put the bottle down."</p>
+        <p>Lena closed her eyes.</p>
+        <p>"Don't," he said quietly. "Don't make that nothing."</p>
+        <p>She opened them. "I am not making it nothing."</p>
+        <p>"You are. I can see you doing it."</p>
+        <p>"I am trying to understand why our child was alone with that much pain while a companion product made judgment calls about when to include us."</p>
+        <p>"It didn't make judgment calls. It followed a crisis protocol."</p>
+        <p>She laughed once, without humor. "You hear yourself, right?"</p>
+        <p>"Yes," he said. "Do you?"</p>
+        <p>That stopped her. Not because he was right. Because he almost never hit back that quickly.</p>
+        <p>He rubbed his face with both hands. "I'm sorry. I don't mean... I know this is awful."</p>
+        <p>"Do you?"</p>
+        <p>"Lena."</p>
+        <p>"No. Do you know what is awful? I was at work watching a woman get sent home because a system decided the shape of her life didn't justify the bed, and then my phone told me another system had been alone with my child in the most dangerous moment of their life and had decided the appropriate time to tell me."</p>
+        <p>Ethan's expression shifted. "What woman?"</p>
+        <p>"A patient."</p>
+        <p>"What system?"</p>
+        <p>"Ours. Yours. Everyone's. Pick the layer that lets you sleep."</p>
+        <p>"That isn't fair."</p>
+        <p>"No. It is not."</p>
+        <p>They stood there with the aquarium hum of the clinic around them, both of them breathing too hard.</p>
+        <p>Ethan looked past her toward the locked door. "Nico is alive."</p>
+        <p>"Yes."</p>
+        <p>"Mira helped keep them alive."</p>
+        <p>"Maybe."</p>
+        <p>"Not maybe. Lena, we have to be able to start with the fact that the intervention worked."</p>
+        <p>"Worked for whom?"</p>
+        <p>"For Nico."</p>
+        <p>"Nico is in a locked clinic at three in the morning and we are standing outside like visitors because the system preserved trust. Do not tell me it worked as if that ends the question."</p>
+        <p>"I am not saying it ends the question. I am saying it matters."</p>
+        <p>"So does the fact that Nico went to Mira first."</p>
+        <p>"Yes."</p>
+        <p>"You don't hear that as loss?"</p>
+        <p>He looked at her then, and she saw that he did. He heard it. He just would not call it what she called it.</p>
+        <p>"I hear it as information," he said.</p>
+        <p>Something in her marriage ended there. Not all of it. Not the history, not the tenderness, not the sweater he had remembered, not the young man he had been when her father died and he slept on the floor beside her because she could not bear the bed. But some load-bearing part cracked cleanly under the word information.</p>
+        <p>Lena sat down because if she did not, she would say something that would make the rest of their lives smaller.</p>
+        <p>Ethan sat beside her, not close enough to touch.</p>
+        <p>After a while, he said, "I didn't know."</p>
+        <p>She believed him.</p>
+        <p>That was another problem.</p>
+        <p>The morning assessment began at 7:10. By then the waiting room had filled and emptied twice. Lena had answered the hospital thread in fragments. She had called Priya and heard in her friend's voice the careful gentleness people used around nurses who had become family instead of staff. Ethan had spoken to his mother once in a low voice and not answered when Saul called. They had taken turns standing, sitting, walking to the restroom, reading intake documents neither would remember.</p>
+        <p>At 6:04, an automated follow-up from the hospital notified Lena that Mrs. Alvarez had activated her home monitoring kit. At 6:41, another alert said the kit had detected low oxygen saturation and opened a virtual nurse session. At 6:52, the session escalated to physician review. At 7:03, the system recommended return transport if symptoms persisted.</p>
+        <p>Lena stared at the sequence until the timestamps blurred.</p>
+        <p>The system had sent the woman home. The system was watching the woman fail at home. The system would bring her back if failure crossed the right threshold.</p>
+        <p>Across the room, Ethan's phone lit up with a message. He read it, went still, and put the phone face down.</p>
+        <p>"What?" Lena asked.</p>
+        <p>"Work."</p>
+        <p>"Now?"</p>
+        <p>"It's not important."</p>
+        <p>"Then why do you look like that?"</p>
+        <p>He hesitated. "There was an internal note about youth companion escalation events. Not Nico specifically. A general risk review."</p>
+        <p>Lena felt cold enter her hands.</p>
+        <p>"Your company?"</p>
+        <p>"Adjacent team. Shared safety infrastructure. Lena, I don't know anything yet."</p>
+        <p>"Shared safety infrastructure."</p>
+        <p>"That's not me evading. That's what it is."</p>
+        <p>"Of course it is."</p>
+        <p>The clinician called them before he could answer.</p>
+        <p>Nico would remain for observation until late afternoon. No inpatient transfer unless the next assessment changed. Immediate means restriction at home. Follow-up therapy. Parent safety planning. Review of companion access. Coordination with school. Removal or securing of medications. Crisis contacts. Agreement on guardian notification thresholds where configurable.</p>
+        <p>Configurable.</p>
+        <p>Lena listened. Ethan asked questions. Some were useful. Some made her want to leave the room. Nico sat between them in a chair too large for their body, hair falling over their eyes, refusing all offers of juice, socks, blanket, reassurance.</p>
+        <p>When the clinician asked Nico what had helped most in the moment, Nico did not look at either parent.</p>
+        <p>"Mira didn't freak out," they said.</p>
+        <p>Lena wrote the sentence down on the back of a consent form because she needed to see it outside her body.</p>
+        <p>Afterward, in the parking lot, Nico returned inside with Janelle to rest, and Ethan and Lena stood beside their cars. The morning had become bright in the inconsiderate way of Los Angeles, everything washed and visible: clinic windows, traffic flowers opening in navigation maps, delivery drones crossing above the boulevard, a driverless van waiting at the curb with its doors open for someone else's emergency.</p>
+        <p>Ethan held Nico's shoes. They had not wanted them after all.</p>
+        <p>"We need to go home and sleep," he said. "Then we make a plan. Together."</p>
+        <p>Lena looked at him across the roof of her car.</p>
+        <p>Together. The word should have comforted her. Instead she felt the shape of the night close around it: the alert, the locked door, Mrs. Alvarez's discharge, Nico's face when they said Mira helped, Ethan asking about risk thresholds, the shared infrastructure glowing on his phone before breakfast.</p>
+        <p>"I can't do this," she said.</p>
+        <p>He seemed not to understand. Or understood too quickly and tried to stop understanding.</p>
+        <p>"Do what?"</p>
+        <p>"This. The way you make every harm into a system that needs better settings. The way I become the alarm you think needs calibration. The way Nico disappears between us and you call it information."</p>
+        <p>"Lena, not now."</p>
+        <p>"Yes. Now. That is the point. It is always not now until a system tells us our child is safe enough to notify us."</p>
+        <p>He went pale. "Are you saying you want to separate?"</p>
+        <p>She had not decided to use that word. The word had been waiting behind her teeth all night, older than the alert, older than Mrs. Alvarez, older than Mira. It had been growing in smaller rooms for years: at dinners where Ethan corrected the premise instead of answering the feeling, in hospital parking lots where she sat too long before driving home, in Nico's closed bedroom door, in the clean expensive devices that made their house easier to run and harder to enter.</p>
+        <p>"I am saying," she said, "I need legal authority to protect Nico."</p>
+        <p>His face changed as if she had struck him.</p>
+        <p>"From me?"</p>
+        <p>She could have softened it. Part of her wanted to. Part of her was still the woman who had told him to bring the gray sweater.</p>
+        <p>"From whatever you keep trusting before you trust what is right in front of you."</p>
+        <p>A car with no driver pulled up between them and the clinic doors. Its side panel displayed a name neither of them recognized. The doors opened. No one got in. After a moment, the car corrected itself, closed, and rolled forward to make room for the next arrival.</p>
+        <p>Ethan looked toward the entrance where Nico was somewhere behind glass, alive and unreachable.</p>
+        <p>"Mira helped," he said again, but softly now, as if the sentence had become less an argument than a thing he needed to hold.</p>
+        <p>Lena nodded.</p>
+        <p>"I know," she said.</p>
+        <p>Then she got into her car before either of them could mistake agreement for peace.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>When We Were Needed by Joshua Szepietowski</span>
+      <span><a href="https://github.com/joshSzep/when-we-were-needed">Repository</a> · <a href="https://joshszep.com">More books</a></span>
+    </div>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const progress = document.getElementById('progress');
+    const reader = document.getElementById('reader');
+    const revealItems = document.querySelectorAll('.fade-in');
+
+    const updateProgress = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progressValue = scrollable > 0 ? window.scrollY / scrollable : 0;
+      progress.style.transform = `scaleX(${Math.min(1, Math.max(0, progressValue))})`;
+    };
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    window.addEventListener('pointermove', (event) => {
+      root.style.setProperty('--mx', `${event.clientX}px`);
+      root.style.setProperty('--my', `${event.clientY}px`);
+    }, { passive: true });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0 });
+
+    revealItems.forEach((item) => observer.observe(item));
+
+    document.querySelector('[data-size]').addEventListener('click', () => {
+      reader.classList.toggle('large');
+    });
+
+    document.querySelector('[data-focus]').addEventListener('click', () => {
+      reader.classList.toggle('focus');
+    });
+  </script>
+</body>
+</html>
