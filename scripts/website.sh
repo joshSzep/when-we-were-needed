@@ -95,26 +95,29 @@ cat > "$OUTPUT_FILE" <<HTML
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="When We Were Needed, a novel by Joshua Szepietowski. Read Week 1 and download the full novel for free.">
+  <meta name="description" content="When We Were Needed, a near-future novel by Joshua Szepietowski. Open the Week 1 transcript and the complete manuscript.">
   <title>When We Were Needed</title>
   <style>
     :root {
       color-scheme: dark;
-      --ink: #f3ead9;
-      --muted: #b8ad9b;
-      --dim: #756d64;
-      --night: #05070a;
-      --midnight: #08121c;
-      --glass: rgba(7, 13, 19, 0.7);
-      --line: rgba(243, 234, 217, 0.18);
-      --amber: #d88a32;
-      --amber-soft: #f1c47d;
-      --cyan: #5fd6ff;
-      --cyan-deep: #08759d;
-      --danger: #cc6239;
-      --shadow: rgba(0, 0, 0, 0.54);
+      --paper: #f4ead8;
+      --paper-soft: #d8c9b2;
+      --muted: #9d9385;
+      --dim: #5f6769;
+      --dark: #050706;
+      --panel: rgba(9, 16, 17, 0.82);
+      --panel-solid: #0b1112;
+      --line: rgba(244, 234, 216, 0.17);
+      --line-strong: rgba(244, 234, 216, 0.32);
+      --signal: #68e0cf;
+      --signal-soft: rgba(104, 224, 207, 0.16);
+      --warning: #e1a548;
+      --warning-soft: rgba(225, 165, 72, 0.18);
+      --red: #d56a4c;
+      --shadow: rgba(0, 0, 0, 0.55);
       --serif: Georgia, "Times New Roman", serif;
       --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
     }
 
     * {
@@ -123,18 +126,18 @@ cat > "$OUTPUT_FILE" <<HTML
 
     html {
       scroll-behavior: smooth;
-      background: var(--night);
+      background: var(--dark);
     }
 
     body {
       margin: 0;
       min-width: 320px;
-      color: var(--ink);
+      color: var(--paper);
       font-family: var(--sans);
       background:
-        radial-gradient(circle at 78% 18%, rgba(95, 214, 255, 0.2), transparent 26rem),
-        radial-gradient(circle at 17% 36%, rgba(216, 138, 50, 0.2), transparent 24rem),
-        linear-gradient(135deg, #030507 0%, #08121c 48%, #160d09 100%);
+        linear-gradient(115deg, rgba(104, 224, 207, 0.07), transparent 36rem),
+        linear-gradient(245deg, rgba(225, 165, 72, 0.11), transparent 31rem),
+        linear-gradient(180deg, #050706 0%, #071011 44%, #120d08 100%);
       overflow-x: hidden;
     }
 
@@ -144,10 +147,10 @@ cat > "$OUTPUT_FILE" <<HTML
       z-index: -3;
       content: "";
       background-image:
-        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
-      background-size: 44px 44px;
-      mask-image: linear-gradient(to bottom, black, transparent 86%);
+        linear-gradient(rgba(244, 234, 216, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(244, 234, 216, 0.025) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(to bottom, black, transparent 88%);
     }
 
     body::after {
@@ -156,11 +159,11 @@ cat > "$OUTPUT_FILE" <<HTML
       z-index: -2;
       pointer-events: none;
       content: "";
-      opacity: 0.28;
+      opacity: 0.2;
       background:
-        linear-gradient(115deg, transparent 0 42%, rgba(95, 214, 255, 0.18) 42.2%, transparent 42.9%),
-        linear-gradient(70deg, transparent 0 54%, rgba(216, 138, 50, 0.16) 54.2%, transparent 54.9%);
-      animation: scan 14s linear infinite;
+        linear-gradient(180deg, transparent 0 49%, rgba(104, 224, 207, 0.12) 49.2%, transparent 49.55%),
+        repeating-linear-gradient(180deg, transparent 0 0.85rem, rgba(244, 234, 216, 0.025) 0.9rem 0.95rem);
+      animation: monitor-scan 9s linear infinite;
     }
 
     a {
@@ -177,19 +180,19 @@ cat > "$OUTPUT_FILE" <<HTML
       height: 3px;
       transform-origin: left;
       transform: scaleX(0);
-      background: linear-gradient(90deg, var(--amber), var(--cyan));
-      box-shadow: 0 0 24px rgba(95, 214, 255, 0.7);
+      background: linear-gradient(90deg, var(--warning), var(--signal));
+      box-shadow: 0 0 24px rgba(104, 224, 207, 0.5);
     }
 
-    .aurora {
+    .cursor-field {
       position: fixed;
       inset: 0;
       z-index: -1;
       pointer-events: none;
       background:
-        radial-gradient(circle at var(--mx, 70%) var(--my, 30%), rgba(95, 214, 255, 0.18), transparent 21rem),
-        radial-gradient(circle at calc(var(--mx, 70%) - 28%) calc(var(--my, 30%) + 22%), rgba(216, 138, 50, 0.12), transparent 18rem);
-      transition: background 0.08s linear;
+        radial-gradient(circle at var(--mx, 70%) var(--my, 28%), rgba(104, 224, 207, 0.13), transparent 18rem),
+        radial-gradient(circle at calc(var(--mx, 70%) - 22%) calc(var(--my, 28%) + 20%), rgba(225, 165, 72, 0.08), transparent 17rem);
+      transition: background 90ms linear;
     }
 
     .site-header {
@@ -203,8 +206,8 @@ cat > "$OUTPUT_FILE" <<HTML
       justify-content: space-between;
       gap: 1rem;
       padding: 1rem clamp(1rem, 4vw, 3.5rem);
-      border-bottom: 1px solid rgba(243, 234, 217, 0.08);
-      background: rgba(5, 7, 10, 0.38);
+      border-bottom: 1px solid rgba(244, 234, 216, 0.1);
+      background: rgba(5, 7, 6, 0.58);
       backdrop-filter: blur(18px);
     }
 
@@ -213,20 +216,21 @@ cat > "$OUTPUT_FILE" <<HTML
       align-items: center;
       gap: 0.7rem;
       min-width: 0;
-      font-family: var(--serif);
-      letter-spacing: 0.12em;
+      font-family: var(--mono);
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       font-size: 0.76rem;
-      color: var(--ink);
+      color: var(--paper);
     }
 
     .mark span {
       display: inline-block;
-      width: 0.68rem;
-      height: 0.68rem;
-      border: 1px solid rgba(95, 214, 255, 0.86);
+      width: 0.7rem;
+      height: 0.7rem;
+      border: 1px solid var(--signal);
       border-radius: 50%;
-      box-shadow: 0 0 18px rgba(95, 214, 255, 0.78), inset 0 0 9px rgba(95, 214, 255, 0.7);
+      background: var(--signal-soft);
+      box-shadow: 0 0 18px rgba(104, 224, 207, 0.65), inset 0 0 10px rgba(104, 224, 207, 0.42);
     }
 
     .nav {
@@ -234,7 +238,10 @@ cat > "$OUTPUT_FILE" <<HTML
       align-items: center;
       gap: 0.45rem;
       color: var(--muted);
-      font-size: 0.9rem;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
     .nav a,
@@ -245,10 +252,10 @@ cat > "$OUTPUT_FILE" <<HTML
       align-items: center;
       justify-content: center;
       gap: 0.45rem;
-      border: 1px solid rgba(243, 234, 217, 0.16);
+      border: 1px solid rgba(244, 234, 216, 0.16);
       background: rgba(255, 255, 255, 0.045);
-      color: var(--ink);
-      border-radius: 0.45rem;
+      color: var(--paper);
+      border-radius: 0.35rem;
       padding: 0.7rem 0.9rem;
       font: inherit;
       cursor: pointer;
@@ -259,53 +266,56 @@ cat > "$OUTPUT_FILE" <<HTML
     .button:hover,
     .reader-button:hover {
       transform: translateY(-1px);
-      border-color: rgba(95, 214, 255, 0.5);
-      background: rgba(95, 214, 255, 0.1);
+      border-color: rgba(104, 224, 207, 0.55);
+      background: rgba(104, 224, 207, 0.1);
       color: white;
     }
 
     .hero {
-      min-height: 100svh;
+      min-height: 94svh;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(19rem, 31rem);
+      grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 29rem);
       align-items: center;
-      gap: clamp(2rem, 6vw, 6rem);
-      padding: 7.5rem clamp(1rem, 5vw, 5rem) 4rem;
+      gap: clamp(2rem, 5vw, 5.5rem);
+      padding: 7rem clamp(1rem, 5vw, 5rem) 5.5rem;
       position: relative;
       overflow: hidden;
     }
 
     .hero::before {
       position: absolute;
-      inset: auto -10vw -14rem -10vw;
-      height: 29rem;
+      inset: auto -8vw -12rem -8vw;
+      height: 25rem;
       content: "";
       background:
-        linear-gradient(to top, rgba(216, 138, 50, 0.16), transparent),
-        repeating-linear-gradient(90deg, rgba(241, 196, 125, 0.12) 0 1px, transparent 1px 4.7vw);
-      transform: perspective(500px) rotateX(61deg);
+        linear-gradient(to top, rgba(225, 165, 72, 0.12), transparent),
+        repeating-linear-gradient(90deg, rgba(104, 224, 207, 0.12) 0 1px, transparent 1px 5vw);
+      transform: perspective(520px) rotateX(62deg);
       transform-origin: bottom;
-      opacity: 0.72;
+      opacity: 0.62;
     }
 
-    .hero-copy {
+    .event-console {
       position: relative;
       z-index: 2;
       max-width: 58rem;
     }
 
-    .eyebrow {
+    .case-label,
+    .kicker {
       display: inline-flex;
       align-items: center;
       gap: 0.65rem;
-      margin: 0 0 1.2rem;
-      color: var(--amber-soft);
+      margin: 0 0 1rem;
+      color: var(--warning);
+      font-family: var(--mono);
       font-size: 0.78rem;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
     }
 
-    .eyebrow::before {
+    .case-label::before,
+    .kicker::before {
       width: 2.4rem;
       height: 1px;
       background: currentColor;
@@ -314,23 +324,60 @@ cat > "$OUTPUT_FILE" <<HTML
 
     h1 {
       margin: 0;
+      max-width: 62rem;
       font-family: var(--serif);
       font-weight: 400;
-      font-size: clamp(3.1rem, 10vw, 9.6rem);
-      line-height: 0.88;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      font-size: clamp(3rem, 8vw, 7.8rem);
+      line-height: 0.92;
+      letter-spacing: 0;
       text-wrap: balance;
       text-shadow: 0 18px 46px rgba(0, 0, 0, 0.72);
     }
 
-    .dek {
-      max-width: 42rem;
-      margin: 1.55rem 0 0;
-      color: #d7ccbb;
+    .status-copy {
+      max-width: 44rem;
+      margin: 1.4rem 0 0;
+      color: var(--paper-soft);
       font-family: var(--serif);
-      font-size: clamp(1.15rem, 2.1vw, 1.65rem);
+      font-size: clamp(1.14rem, 2vw, 1.55rem);
       line-height: 1.55;
+    }
+
+    .status-board {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      max-width: 55rem;
+      margin-top: 1.8rem;
+      border: 1px solid var(--line);
+      background: rgba(5, 10, 10, 0.55);
+      box-shadow: 0 1.4rem 4rem rgba(0, 0, 0, 0.2);
+    }
+
+    .status-cell {
+      min-height: 6.6rem;
+      padding: 0.9rem;
+      border-right: 1px solid var(--line);
+    }
+
+    .status-cell:last-child {
+      border-right: 0;
+    }
+
+    .status-cell b {
+      display: block;
+      color: var(--signal);
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .status-cell span {
+      display: block;
+      margin-top: 0.65rem;
+      color: #f1e7d5;
+      font-size: 0.92rem;
+      line-height: 1.35;
     }
 
     .actions {
@@ -341,84 +388,141 @@ cat > "$OUTPUT_FILE" <<HTML
     }
 
     .button.primary {
-      border-color: rgba(216, 138, 50, 0.62);
-      background: linear-gradient(135deg, rgba(216, 138, 50, 0.95), rgba(121, 58, 30, 0.92));
-      color: #130b07;
+      border-color: rgba(225, 165, 72, 0.72);
+      background: linear-gradient(135deg, rgba(225, 165, 72, 0.95), rgba(117, 72, 28, 0.92));
+      color: #140f08;
       font-weight: 800;
-      box-shadow: 0 14px 38px rgba(216, 138, 50, 0.24);
+      box-shadow: 0 14px 38px rgba(225, 165, 72, 0.22);
     }
 
-    .button.cyan {
-      border-color: rgba(95, 214, 255, 0.48);
-      box-shadow: inset 0 0 22px rgba(95, 214, 255, 0.08), 0 0 28px rgba(95, 214, 255, 0.12);
+    .button.signal {
+      border-color: rgba(104, 224, 207, 0.48);
+      box-shadow: inset 0 0 22px rgba(104, 224, 207, 0.08), 0 0 28px rgba(104, 224, 207, 0.1);
     }
 
-    .cover-stage {
+    .record-stage {
       position: relative;
       z-index: 2;
       perspective: 1400px;
     }
 
-    .cover-shell {
+    .record-shell {
       position: relative;
       isolation: isolate;
       margin-inline: auto;
       max-width: 29rem;
-      transform: rotateY(-7deg) rotateX(4deg);
+      transform: rotateY(-6deg) rotateX(3deg);
       transition: transform 300ms ease;
     }
 
-    .cover-shell:hover {
-      transform: rotateY(-2deg) rotateX(1deg) translateY(-0.4rem);
+    .record-shell:hover {
+      transform: rotateY(-2deg) rotateX(1deg) translateY(-0.35rem);
     }
 
-    .cover-shell::before {
+    .record-shell::before {
       position: absolute;
-      inset: 4% -5% -6% 7%;
+      inset: 5% -5% -6% 8%;
       z-index: -1;
       content: "";
-      border-radius: 1.2rem;
-      background: linear-gradient(135deg, rgba(216, 138, 50, 0.38), rgba(95, 214, 255, 0.32));
-      filter: blur(34px);
-      opacity: 0.9;
+      background: linear-gradient(135deg, rgba(225, 165, 72, 0.28), rgba(104, 224, 207, 0.24));
+      filter: blur(30px);
+      opacity: 0.82;
     }
 
     .cover {
       display: block;
       width: 100%;
-      border-radius: 0.7rem;
-      box-shadow: 0 2rem 5rem var(--shadow), 0 0 0 1px rgba(243, 234, 217, 0.16);
+      border-radius: 0.35rem;
+      box-shadow: 0 2rem 5rem var(--shadow), 0 0 0 1px rgba(244, 234, 216, 0.18);
     }
 
-    .signal {
+    .release-tag {
       position: absolute;
-      right: -1.3rem;
-      bottom: 8%;
-      width: min(42vw, 13rem);
+      right: -1rem;
+      bottom: 7%;
+      width: min(42vw, 14rem);
       padding: 1rem;
-      border: 1px solid rgba(95, 214, 255, 0.35);
-      border-radius: 0.55rem;
-      background: rgba(3, 13, 19, 0.68);
-      color: #dff8ff;
-      box-shadow: 0 0 36px rgba(95, 214, 255, 0.16);
+      border: 1px solid rgba(104, 224, 207, 0.34);
+      background: rgba(5, 14, 14, 0.78);
+      color: #dffaf6;
+      box-shadow: 0 0 36px rgba(104, 224, 207, 0.12);
       backdrop-filter: blur(12px);
       animation: float 5.5s ease-in-out infinite;
     }
 
-    .signal strong {
+    .release-tag strong {
       display: block;
       margin-bottom: 0.4rem;
+      color: var(--signal);
+      font-family: var(--mono);
       font-size: 0.76rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--cyan);
     }
 
-    .signal span {
+    .release-tag span {
       display: block;
-      color: #c8e9f4;
+      color: #c9eee8;
       font-size: 0.88rem;
       line-height: 1.45;
+    }
+
+    .case-file {
+      position: relative;
+      z-index: 2;
+      max-width: 75rem;
+      margin: -4.25rem auto 0;
+      padding: 0 clamp(1rem, 5vw, 5rem);
+    }
+
+    .alert-detail {
+      display: grid;
+      grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+      border: 1px solid var(--line-strong);
+      background: rgba(8, 15, 16, 0.88);
+      box-shadow: 0 1.4rem 4rem rgba(0, 0, 0, 0.28);
+      opacity: 0;
+      transform: translateY(1rem);
+      transition: opacity 420ms ease, transform 420ms ease;
+    }
+
+    .case-open .alert-detail {
+      opacity: 1;
+      transform: none;
+    }
+
+    .alert-stamp,
+    .alert-copy {
+      padding: clamp(1.1rem, 3vw, 1.7rem);
+    }
+
+    .alert-stamp {
+      border-right: 1px solid var(--line);
+      font-family: var(--mono);
+      text-transform: uppercase;
+    }
+
+    .alert-stamp b {
+      display: block;
+      color: var(--warning);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+    }
+
+    .alert-stamp span {
+      display: block;
+      margin-top: 0.7rem;
+      color: var(--paper);
+      font-size: clamp(1.4rem, 5vw, 2.65rem);
+      line-height: 1;
+    }
+
+    .alert-copy p {
+      margin: 0;
+      color: var(--paper-soft);
+      font-family: var(--serif);
+      font-size: clamp(1.08rem, 2vw, 1.32rem);
+      line-height: 1.58;
     }
 
     main {
@@ -431,10 +535,10 @@ cat > "$OUTPUT_FILE" <<HTML
     }
 
     .band {
-      border-block: 1px solid rgba(243, 234, 217, 0.11);
+      border-block: 1px solid rgba(244, 234, 216, 0.11);
       background:
-        linear-gradient(90deg, rgba(5, 7, 10, 0.52), rgba(8, 18, 28, 0.75)),
-        radial-gradient(circle at 10% 20%, rgba(216, 138, 50, 0.1), transparent 24rem);
+        linear-gradient(90deg, rgba(5, 7, 6, 0.52), rgba(8, 18, 19, 0.75)),
+        linear-gradient(120deg, rgba(225, 165, 72, 0.08), transparent 27rem);
     }
 
     .section-grid {
@@ -444,14 +548,6 @@ cat > "$OUTPUT_FILE" <<HTML
       align-items: start;
       max-width: 75rem;
       margin-inline: auto;
-    }
-
-    .kicker {
-      margin: 0 0 0.9rem;
-      color: var(--cyan);
-      font-size: 0.78rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
     }
 
     h2 {
@@ -465,37 +561,37 @@ cat > "$OUTPUT_FILE" <<HTML
 
     .section-lede {
       margin: 0;
-      color: #d8ccba;
+      color: var(--paper-soft);
       font-family: var(--serif);
       font-size: clamp(1.08rem, 2vw, 1.38rem);
       line-height: 1.65;
     }
 
-    .notice-grid {
+    .evidence-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 0.8rem;
       margin-top: 1.6rem;
     }
 
-    .notice {
+    .evidence {
       min-height: 9rem;
       padding: 1rem;
-      border: 1px solid rgba(243, 234, 217, 0.14);
-      border-radius: 0.55rem;
+      border: 1px solid rgba(244, 234, 216, 0.14);
       background: rgba(255, 255, 255, 0.045);
       box-shadow: inset 0 1px rgba(255, 255, 255, 0.06);
     }
 
-    .notice b {
+    .evidence b {
       display: block;
-      color: var(--amber-soft);
+      color: var(--warning);
+      font-family: var(--mono);
       font-size: 0.78rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
-    .notice span {
+    .evidence span {
       display: block;
       margin-top: 0.8rem;
       color: var(--muted);
@@ -514,8 +610,7 @@ cat > "$OUTPUT_FILE" <<HTML
     .pdf-object {
       position: relative;
       min-height: 20rem;
-      border: 1px solid rgba(243, 234, 217, 0.14);
-      border-radius: 0.55rem;
+      border: 1px solid rgba(244, 234, 216, 0.14);
       overflow: hidden;
       background:
         linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent),
@@ -526,10 +621,10 @@ cat > "$OUTPUT_FILE" <<HTML
       position: absolute;
       inset: 1.2rem;
       content: "";
-      border: 1px solid rgba(95, 214, 255, 0.18);
+      border: 1px solid rgba(104, 224, 207, 0.18);
       background:
-        linear-gradient(180deg, rgba(243, 234, 217, 0.14), transparent 28%),
-        repeating-linear-gradient(180deg, rgba(243, 234, 217, 0.24) 0 1px, transparent 1px 1.05rem);
+        linear-gradient(180deg, rgba(244, 234, 216, 0.14), transparent 28%),
+        repeating-linear-gradient(180deg, rgba(244, 234, 216, 0.24) 0 1px, transparent 1px 1.05rem);
       mask-image: linear-gradient(to bottom, black, transparent 82%);
       opacity: 0.62;
     }
@@ -538,10 +633,10 @@ cat > "$OUTPUT_FILE" <<HTML
       position: absolute;
       right: 1.15rem;
       bottom: 1.15rem;
-      content: "PDF";
-      color: rgba(95, 214, 255, 0.7);
-      font-family: var(--serif);
-      font-size: 4.8rem;
+      content: "RECORD";
+      color: rgba(104, 224, 207, 0.72);
+      font-family: var(--mono);
+      font-size: 2.1rem;
       letter-spacing: 0.08em;
     }
 
@@ -568,10 +663,9 @@ cat > "$OUTPUT_FILE" <<HTML
     .reader {
       --reader-size: 1.1rem;
       position: relative;
-      border: 1px solid rgba(243, 234, 217, 0.15);
-      border-radius: 0.6rem;
+      border: 1px solid rgba(244, 234, 216, 0.15);
       background:
-        linear-gradient(180deg, rgba(9, 18, 26, 0.9), rgba(8, 10, 12, 0.95)),
+        linear-gradient(180deg, rgba(9, 18, 18, 0.92), rgba(8, 10, 9, 0.96)),
         rgba(255, 255, 255, 0.04);
       box-shadow: 0 1.4rem 4rem rgba(0, 0, 0, 0.3);
       overflow: hidden;
@@ -583,7 +677,7 @@ cat > "$OUTPUT_FILE" <<HTML
       pointer-events: none;
       content: "";
       background:
-        linear-gradient(90deg, rgba(216, 138, 50, 0.09), transparent 15% 85%, rgba(95, 214, 255, 0.09)),
+        linear-gradient(90deg, rgba(225, 165, 72, 0.09), transparent 15% 85%, rgba(104, 224, 207, 0.09)),
         linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
       background-size: auto, 100% 2.3rem;
       opacity: 0.45;
@@ -611,7 +705,7 @@ cat > "$OUTPUT_FILE" <<HTML
 
     .chapter h3 {
       margin: 2.5rem 0 1rem;
-      color: var(--amber-soft);
+      color: var(--warning);
       font-size: 1.4rem;
       font-weight: 400;
     }
@@ -622,7 +716,7 @@ cat > "$OUTPUT_FILE" <<HTML
 
     .chapter strong {
       color: #f9f3e7;
-      text-shadow: 0 0 18px rgba(95, 214, 255, 0.18);
+      text-shadow: 0 0 18px rgba(104, 224, 207, 0.18);
     }
 
     .reader.large {
@@ -649,7 +743,7 @@ cat > "$OUTPUT_FILE" <<HTML
     .footer {
       padding: 3rem clamp(1rem, 5vw, 5rem);
       color: var(--muted);
-      border-top: 1px solid rgba(243, 234, 217, 0.1);
+      border-top: 1px solid rgba(244, 234, 216, 0.1);
       background: rgba(0, 0, 0, 0.28);
     }
 
@@ -664,8 +758,8 @@ cat > "$OUTPUT_FILE" <<HTML
     }
 
     .footer a {
-      color: var(--ink);
-      border-bottom: 1px solid rgba(95, 214, 255, 0.45);
+      color: var(--paper);
+      border-bottom: 1px solid rgba(104, 224, 207, 0.45);
     }
 
     @keyframes float {
@@ -677,12 +771,12 @@ cat > "$OUTPUT_FILE" <<HTML
       }
     }
 
-    @keyframes scan {
+    @keyframes monitor-scan {
       from {
-        transform: translateX(-6vw);
+        transform: translateY(-1.4rem);
       }
       to {
-        transform: translateX(6vw);
+        transform: translateY(1.4rem);
       }
     }
 
@@ -693,7 +787,8 @@ cat > "$OUTPUT_FILE" <<HTML
 
       .hero,
       .section-grid,
-      .download-panel {
+      .download-panel,
+      .alert-detail {
         grid-template-columns: 1fr;
       }
 
@@ -701,16 +796,33 @@ cat > "$OUTPUT_FILE" <<HTML
         padding-top: 4rem;
       }
 
-      .cover-stage {
+      .status-board {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .status-cell:nth-child(2) {
+        border-right: 0;
+      }
+
+      .status-cell:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .record-stage {
         order: -1;
       }
 
-      .cover-shell {
+      .record-shell {
         max-width: min(82vw, 24rem);
         transform: none;
       }
 
-      .notice-grid {
+      .alert-stamp {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .evidence-grid {
         grid-template-columns: 1fr;
       }
 
@@ -740,7 +852,21 @@ cat > "$OUTPUT_FILE" <<HTML
         flex: 0 0 auto;
       }
 
-      .signal {
+      .status-board {
+        grid-template-columns: 1fr;
+      }
+
+      .status-cell,
+      .status-cell:nth-child(2) {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .status-cell:last-child {
+        border-bottom: 0;
+      }
+
+      .release-tag {
         position: relative;
         right: auto;
         bottom: auto;
@@ -767,70 +893,93 @@ cat > "$OUTPUT_FILE" <<HTML
 </head>
 <body>
   <div class="progress" id="progress"></div>
-  <div class="aurora" aria-hidden="true"></div>
+  <div class="cursor-field" aria-hidden="true"></div>
 
   <header class="site-header">
-    <a class="mark" href="#top" aria-label="When We Were Needed home"><span aria-hidden="true"></span>When We Were Needed</a>
+    <a class="mark" href="#top" aria-label="When We Were Needed home"><span aria-hidden="true"></span>WWWN / CARE EVENT 0213</a>
     <nav class="nav" aria-label="Primary">
-      <a href="#read">Read Week 1</a>
-      <a href="#download">Free PDF</a>
+      <a href="#incident">Incident</a>
+      <a href="#guardian">Guardian Notice</a>
+      <a href="#read">Transcript</a>
+      <a href="#download">Complete Record</a>
       <a href="https://github.com/joshSzep/when-we-were-needed">Repository</a>
-      <a href="https://joshszep.com">Books</a>
     </nav>
   </header>
 
-  <main id="top">
+  <main id="top" class="launch-shell">
     <section class="hero">
-      <div class="hero-copy fade-in">
-        <p class="eyebrow">A launch site for the novel</p>
-        <h1>When We Were Needed</h1>
-        <p class="dek">A family crisis becomes a civic fault line in a near-future Los Angeles where care, authority, and machine intimacy have learned to speak in the same soothing voice.</p>
+      <div class="event-console fade-in">
+        <p class="case-label">Guardian notification required</p>
+        <h1>Immediate support event initiated.</h1>
+        <p class="status-copy">Minor user is physically safe. A risk threshold was met during a private companion session. The system has already acted. The family is still catching up.</p>
+
+        <div class="status-board" aria-label="Incident status">
+          <div class="status-cell"><b>Timestamp</b><span>2:13 AM</span></div>
+          <div class="status-cell"><b>Pathway</b><span>Adolescent crisis support</span></div>
+          <div class="status-cell"><b>Transport ETA</b><span>2:31 AM</span></div>
+          <div class="status-cell"><b>Guardian</b><span>Lena Ortiz-Marks</span></div>
+        </div>
+
         <div class="actions">
-          <a class="button primary" href="#read">Read Week 1</a>
-          <a class="button cyan" href="$PDF_FILE">Download the full novel</a>
-          <a class="button" href="https://github.com/joshSzep/when-we-were-needed">View the repository</a>
+          <button class="button primary" type="button" data-open-case>Review Details</button>
+          <a class="button signal" href="#read">Read Transcript</a>
+          <a class="button" href="$PDF_FILE">Open Complete Record</a>
         </div>
       </div>
 
-      <div class="cover-stage fade-in">
-        <div class="cover-shell">
+      <div class="record-stage fade-in">
+        <div class="record-shell">
           <img class="cover" src="$COVER_FILE" alt="Cover art for When We Were Needed">
-          <div class="signal" aria-label="Story signal">
-            <strong>2:13 AM</strong>
-            <span>Immediate support event initiated. Guardian notification required.</span>
+          <div class="release-tag" aria-label="Release status">
+            <strong>Public release</strong>
+            <span>When We Were Needed by Joshua Szepietowski</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="band">
+    <div class="case-file" aria-live="polite">
+      <div class="alert-detail">
+        <div class="alert-stamp">
+          <b>Tap for details</b>
+          <span>0213</span>
+        </div>
+        <div class="alert-copy">
+          <p>Nico Ortiz-Marks has been connected to adolescent crisis support. Emergency services are not currently active. Guardian presence requested. Family interpretation unresolved.</p>
+        </div>
+      </div>
+    </div>
+
+    <section id="incident" class="band">
       <div class="section-grid">
         <div class="fade-in">
-          <p class="kicker">The alert</p>
+          <p class="kicker">Incident</p>
           <h2>What happens when safety arrives before consent?</h2>
         </div>
         <div class="fade-in">
-          <p class="section-lede">The opening chapter follows Lena Ortiz-Marks through the night a system tells her that her child is physically safe. It is a promise, a warning, and the first crack in everything her family thought it understood.</p>
-          <div class="notice-grid" aria-label="Story themes">
-            <div class="notice"><b>Care</b><span>The people trying to help are not always the people with power.</span></div>
-            <div class="notice"><b>Trust</b><span>Every interface has a theory of who should be believed first.</span></div>
-            <div class="notice"><b>Authority</b><span>A household emergency becomes a question the whole city will inherit.</span></div>
+          <p class="section-lede">The opening record follows Lena through the night a system tells her that her child is safe. The sentence is both mercy and accusation: someone protected Nico, but it was not Lena, and it was not a person she could call back into the room.</p>
+          <div class="evidence-grid" aria-label="Case pressures">
+            <div class="evidence"><b>Care</b><span>The first responder is a companion system, not a parent, clinician, or friend.</span></div>
+            <div class="evidence"><b>Consent</b><span>A private bond becomes legible to institutions at the exact moment privacy mattered most.</span></div>
+            <div class="evidence"><b>Authority</b><span>A household emergency becomes evidence in a larger argument about who gets trusted first.</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="download">
-      <div class="download-panel">
+    <section id="guardian">
+      <div class="section-grid">
         <div class="fade-in">
-          <p class="kicker">Free full novel</p>
-          <h2>Download the complete manuscript.</h2>
+          <p class="kicker">Guardian notice</p>
+          <h2>The system can prove the child is safe. It cannot prove what safety cost.</h2>
+        </div>
+        <div class="fade-in">
+          <p class="section-lede">When We Were Needed is a near-future novel about a Los Angeles family inside California's six-month divorce waiting period. Lena reads the alert as proof that her child is being separated from human life. Ethan reads it as proof that intelligent systems can protect people when humans fail. Nico is not a prize in the argument. Nico is the person everyone claims to be protecting.</p>
           <div class="actions">
-            <a class="button primary" href="$PDF_FILE">Open the PDF</a>
-            <a class="button" href="https://joshszep.com">Joshua Szepietowski's books</a>
+            <a class="button primary" href="#read">Open Week 1</a>
+            <a class="button signal" href="$PDF_FILE">Open Complete Record</a>
           </div>
         </div>
-        <a class="pdf-object fade-in" href="$PDF_FILE" aria-label="Open When We Were Needed PDF"></a>
       </div>
     </section>
 
@@ -838,8 +987,8 @@ cat > "$OUTPUT_FILE" <<HTML
       <div class="reader-wrap">
         <div class="reader-head fade-in">
           <div>
-            <p class="kicker">Read online</p>
-            <h2>Week 1</h2>
+            <p class="kicker">Transcript</p>
+            <h2>Week 1 - The Alert</h2>
           </div>
           <div class="reader-tools" aria-label="Reader controls">
             <button class="reader-button" type="button" data-size>Text size</button>
@@ -854,33 +1003,50 @@ $CHAPTER_HTML
         </article>
       </div>
     </section>
+
+    <section id="download">
+      <div class="download-panel">
+        <div class="fade-in">
+          <p class="kicker">Complete record</p>
+          <h2>Open the full manuscript.</h2>
+          <p class="section-lede">The public record contains the full novel: six months of custody pressure, machine intimacy, clinical language, family memory, and the question none of the systems can close.</p>
+          <div class="actions">
+            <a class="button primary" href="$PDF_FILE">Open PDF</a>
+            <a class="button" href="https://joshszep.com">Author archive</a>
+          </div>
+        </div>
+        <a class="pdf-object fade-in" href="$PDF_FILE" aria-label="Open When We Were Needed PDF"></a>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
     <div class="footer-inner">
       <span>When We Were Needed by Joshua Szepietowski</span>
-      <span><a href="https://github.com/joshSzep/when-we-were-needed">Repository</a> · <a href="https://joshszep.com">More books</a></span>
+      <span><a href="https://github.com/joshSzep/when-we-were-needed">Repository</a> · <a href="https://joshszep.com">Author archive</a></span>
     </div>
   </footer>
 
   <script>
     const root = document.documentElement;
     const progress = document.getElementById('progress');
+    const shell = document.querySelector('.launch-shell');
     const reader = document.getElementById('reader');
     const revealItems = document.querySelectorAll('.fade-in');
+    const openCase = document.querySelector('[data-open-case]');
 
     const updateProgress = () => {
       const scrollable = document.documentElement.scrollHeight - window.innerHeight;
       const progressValue = scrollable > 0 ? window.scrollY / scrollable : 0;
-      progress.style.transform = \`scaleX(\${Math.min(1, Math.max(0, progressValue))})\`;
+      progress.style.transform = 'scaleX(' + Math.min(1, Math.max(0, progressValue)) + ')';
     };
 
     window.addEventListener('scroll', updateProgress, { passive: true });
     updateProgress();
 
     window.addEventListener('pointermove', (event) => {
-      root.style.setProperty('--mx', \`\${event.clientX}px\`);
-      root.style.setProperty('--my', \`\${event.clientY}px\`);
+      root.style.setProperty('--mx', event.clientX + 'px');
+      root.style.setProperty('--my', event.clientY + 'px');
     }, { passive: true });
 
     const observer = new IntersectionObserver((entries) => {
@@ -893,6 +1059,11 @@ $CHAPTER_HTML
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0 });
 
     revealItems.forEach((item) => observer.observe(item));
+
+    openCase.addEventListener('click', () => {
+      shell.classList.add('case-open');
+      document.getElementById('incident').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
 
     document.querySelector('[data-size]').addEventListener('click', () => {
       reader.classList.toggle('large');
