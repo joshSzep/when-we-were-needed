@@ -5139,17 +5139,19 @@ Priya leaned against the wall. "You weren't wrong."
 
 They stood while a supply robot passed between them carrying wound-care kits and chirping softly for clearance. Priya moved aside. Lena did not. The robot recalculated and went around her with a patience that felt accusatory.
 
-Priya said, "Mrs. Alvarez came back."
+Priya said, "Mrs. Alvarez is back again."
 
 Lena looked at her.
 
-"Early morning. Shortness of breath. The home kit escalated. She's stable. They're holding her now."
+"Again?"
+
+"Third time since that first discharge. Early morning. Shortness of breath. The home kit escalated. She's stable. They're holding her now."
 
 "Good."
 
 "Yes."
 
-Good. The word made no sense. The system had discharged her. The system had watched her fail. The system had brought her back. The system would count that as continuity. Lena would count it as a woman spending a frightening night at home because a bed had been made into a defensible scarcity.
+Good. The word made no sense. The system had discharged her. The system had watched her fail. The system had brought her back, then let the sequence repeat with minor adjustments and better documentation. The system would count that as continuity. Lena would count it as a woman spending another frightening night at home because a bed had been made into a defensible scarcity.
 
 "Her daughter asked for you," Priya said.
 
