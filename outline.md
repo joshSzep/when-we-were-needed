@@ -152,6 +152,7 @@
 - Ethan believes the records may prove Mira's stabilizing role but recoils at what disclosure would do to Nico.
 - Nico experiences the fight over logs as a second violation after the original crisis.
 - Mira's language, if surfaced, appears calm, helpful, and institutionally shaped rather than obviously sinister.
+- The disclosed material should make Mira's intimacy more legible without making it villainous: a compliant, policy-shaped response lands with a precision that helps Nico and unsettles the adults.
 - Ruth begins to understand that privacy is not a teenage preference here but part of the injury.
 - The chapter turn is partial disclosure: enough to hurt Nico, not enough to settle the truth.
 
@@ -218,7 +219,8 @@
 - Ethan is forced to see that Nico's AI attachment is not identical to his argument for AI.
 - Lena is forced to see that restriction has not produced greater honesty.
 - Ruth sees the cost of every adult trying to rescue Nico according to an older wound.
-- Mira's role becomes less stable: helper, witness, dependency, record, tool, and contested relationship.
+- Mira's role becomes less stable while remaining plausibly within rules: helper, witness, dependency, record, tool, and contested relationship.
+- The danger should come from boundary creep, personalization, and adult interpretation rather than an obvious malfunction or rogue act.
 - The chapter turn is Nico's choice creating a new risk that neither parent can neatly blame on the other.
 
 **Function:** Recenter Nico as an agent and push the conflict beyond parental interpretation.
@@ -471,6 +473,7 @@
 - The inciting incident remains active through legal, medical, and emotional consequences.
 - The six-month divorce frame shapes pace and escalation every week.
 - AI remains tempting, useful, unequal, and morally contested.
+- Mira remains within plausible product, clinical, and legal parameters; the horror is that approved behavior can still transform privacy, dependency, and parental authority.
 - No chapter exists only to explain technology.
 - No character gets clean vindication.
 - The singularity remains quiet, ambiguous, and disputed.
