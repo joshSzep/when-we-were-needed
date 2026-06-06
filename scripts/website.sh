@@ -5,9 +5,11 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 WEBSITE_DIR="$ROOT_DIR/website"
 COVER_SOURCE="$ROOT_DIR/when-we-were-needed.png"
 PDF_SOURCE="$ROOT_DIR/When We Were Needed.pdf"
+EPUB_SOURCE="$ROOT_DIR/When We Were Needed.epub"
 CHAPTER_SOURCE="$ROOT_DIR/chapters/Phase 1 - The Terms of Safety/Week 1 - The Alert.md"
 COVER_FILE="when-we-were-needed.png"
 PDF_FILE="When We Were Needed.pdf"
+EPUB_FILE="When We Were Needed.epub"
 OUTPUT_FILE="$WEBSITE_DIR/index.html"
 
 require_file() {
@@ -19,11 +21,13 @@ require_file() {
 
 require_file "$COVER_SOURCE"
 require_file "$PDF_SOURCE"
+require_file "$EPUB_SOURCE"
 require_file "$CHAPTER_SOURCE"
 
 mkdir -p "$WEBSITE_DIR"
 cp "$COVER_SOURCE" "$WEBSITE_DIR/$COVER_FILE"
 cp "$PDF_SOURCE" "$WEBSITE_DIR/$PDF_FILE"
+cp "$EPUB_SOURCE" "$WEBSITE_DIR/$EPUB_FILE"
 
 markdown_to_html() {
   awk '
@@ -924,6 +928,7 @@ cat > "$OUTPUT_FILE" <<HTML
           <button class="button primary" type="button" data-open-case>Review Details</button>
           <a class="button signal" href="#read">Read Transcript</a>
           <a class="button" href="$PDF_FILE">Open Complete Record</a>
+          <a class="button" href="$EPUB_FILE" download>Download EPUB</a>
         </div>
       </div>
 
@@ -978,6 +983,7 @@ cat > "$OUTPUT_FILE" <<HTML
           <div class="actions">
             <a class="button primary" href="#read">Open Week 1</a>
             <a class="button signal" href="$PDF_FILE">Open Complete Record</a>
+            <a class="button" href="$EPUB_FILE" download>Download EPUB</a>
           </div>
         </div>
       </div>
@@ -1012,6 +1018,7 @@ $CHAPTER_HTML
           <p class="section-lede">The public record contains the full novel: six months of custody pressure, machine intimacy, clinical language, family memory, and the question none of the systems can close.</p>
           <div class="actions">
             <a class="button primary" href="$PDF_FILE">Open PDF</a>
+            <a class="button signal" href="$EPUB_FILE" download>Download EPUB</a>
             <a class="button" href="https://joshszep.com">Author archive</a>
           </div>
         </div>
@@ -1078,4 +1085,4 @@ $CHAPTER_HTML
 HTML
 
 echo "Generated $OUTPUT_FILE"
-echo "Copied $COVER_FILE and $PDF_FILE into $WEBSITE_DIR"
+echo "Copied $COVER_FILE, $PDF_FILE, and $EPUB_FILE into $WEBSITE_DIR"
