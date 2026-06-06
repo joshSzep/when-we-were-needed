@@ -101,6 +101,8 @@ cat > "$OUTPUT_FILE" <<HTML
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="When We Were Needed, a near-future novel by Joshua Szepietowski. Open the Week 1 transcript and the complete manuscript.">
   <title>When We Were Needed</title>
+  <link rel="icon" type="image/png" href="when-we-were-needed.png">
+  <link rel="apple-touch-icon" href="when-we-were-needed.png">
   <style>
     :root {
       color-scheme: dark;
